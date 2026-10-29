@@ -21,7 +21,7 @@ learn/
 ├── app.py                  # Web layer: all Flask routes (auth / chat / topics / semantic search)
 ├── openapi.json            # API documentation (OpenAPI format)
 ├── data/
-│   └── ai_chat.db          # SQLite database (currently in use)
+│   └── ai_chat.db          # SQLite database (auto-created at runtime; not committed to Git)
 └── chatbot/                # Business package
     ├── config.py           # Config layer: models, prompts, Flask settings (only file to touch for config changes)
     ├── llm.py              # Model layer: creates the LLM instance; swap models here
@@ -69,7 +69,13 @@ All tunable parameters live in `chatbot/config.py`:
 # from the repository root
 .\.venv\Scripts\python.exe learn\app.py
 ```
-
+> 📄 **Database preparation**: Git does not track `learn/data/*.db`. On first startup, or on first import of `chatbot.memory`, the app automatically creates `learn/data/ai_chat.db` and all tables. To initialize it early:
+>
+> ```powershell
+> Push-Location learn
+> ..\.venv\Scripts\python.exe -c "from chatbot.memory import init_db; init_db(); print('database ready')"
+> Pop-Location
+> ```
 Once running, open `http://127.0.0.1:5000/` for service info; API docs are in `learn/openapi.json`.
 
 ## Authentication
@@ -131,7 +137,7 @@ Invoke-WebRequest -Method Post http://127.0.0.1:5000/chat/stream `
 
 ## Database
 
-SQLite file: `learn/data/ai_chat.db`; tables are created automatically on first import of `chatbot.memory`.
+SQLite file: `learn/data/ai_chat.db`. Git does not track `learn/data/*.db`; the first import of `chatbot.memory` creates the data directory, SQLite file, and all tables automatically. After cloning to a new environment, just start the app. To initialize early, run the command in the Running section.
 
 | Table | Description |
 |---|---|

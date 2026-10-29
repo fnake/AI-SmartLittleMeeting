@@ -21,7 +21,7 @@ learn/
 ├── app.py                  # Web 层：所有 Flask 路由（认证 / 聊天 / 话题 / 语义搜索）
 ├── openapi.json            # 接口文档（OpenAPI 格式）
 ├── data/
-│   └── ai_chat.db          # SQLite 数据库（当前使用）
+│   └── ai_chat.db          # SQLite 数据库（运行时自动创建；不提交 Git）
 └── chatbot/                # 业务包
     ├── config.py           # 配置层：模型、提示词、Flask 参数（改配置只动这里）
     ├── llm.py              # 模型层：创建 LLM 实例，换模型只改这里
@@ -69,7 +69,13 @@ pip install flask langchain langchain-openai
 # 仓库根目录下
 .\.venv\Scripts\python.exe learn\app.py
 ```
-
+> 📄 **数据库准备**：仓库不提交 `learn/data/*.db`。首次启动或导入 `chatbot.memory` 时，程序会自动创建 `learn/data/ai_chat.db` 并建表，通常不需要手工建库。若要提前初始化：
+>
+> ```powershell
+> Push-Location learn
+> ..\.venv\Scripts\python.exe -c "from chatbot.memory import init_db; init_db(); print('database ready')"
+> Pop-Location
+> ```
 启动后访问 `http://127.0.0.1:5000/` 可看到服务信息，接口文档见 `learn/openapi.json`。
 
 ## 认证方式
@@ -131,7 +137,7 @@ Invoke-WebRequest -Method Post http://127.0.0.1:5000/chat/stream `
 
 ## 数据库
 
-SQLite 文件：`learn/data/ai_chat.db`，首次导入 `chatbot.memory` 时自动建表。
+SQLite 文件：`learn/data/ai_chat.db`。Git 不提交 `learn/data/*.db`；首次导入 `chatbot.memory` 时会自动创建 data 目录、SQLite 文件和所有表。克隆到新环境后直接启动应用即可；如需提前初始化，可运行上方启动章节中的初始化命令。
 
 | 表 | 说明 |
 |---|---|
