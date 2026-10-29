@@ -12,7 +12,7 @@ from langchain_core.runnables.history import RunnableWithMessageHistory
 llm = ChatOpenAI(
     temperature=0.6,
     model="glm-5.3",
-    api_key=os.environ.get("Zhipu_GLM", "530786c07c0d42a69fa67d2157fa1dc8.RbfJ1y2lDFmrhoxm"),
+    api_key=os.environ.get("Zhipu_GLM", "Zhipu_GLM-xxx"),
     base_url="https://open.bigmodel.cn/api/paas/v4/"
 )
 
