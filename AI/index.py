@@ -8,7 +8,7 @@ from langchain_core.chat_history import InMemoryChatMessageHistory
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.runnables.history import RunnableWithMessageHistory
 
-# 1. 创建智谱 LLM 实例
+# 1. 创建智谱 LLM 实例/举例模型
 llm = ChatOpenAI(
     temperature=0.6,
     model="glm-5.3",
