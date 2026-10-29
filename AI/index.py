@@ -13,7 +13,7 @@ llm = ChatOpenAI(
     temperature=0.6,
     model="glm-5.3",
     api_key=os.environ.get("Zhipu_GLM", "Zhipu_GLM-xxx"),
-    base_url="https://open.bigmodel.cn/api/paas/v4/"
+    base_url="https://"
 )
 
 # 2. 提示词模板（注意：必须先定义 prompt，才能拼 chain）
