@@ -1,0 +1,58 @@
+﻿/* ===== 通用聊天消息样式（历史回显与实时回复共用） =====
+ * 结构：
+ *   <div class="msg user"><div class="bubble">用户消息</div></div>
+ *   <div class="msg ai"><div class="ai-text">AI 回复</div></div>
+ * 配合 <TransitionGroup name="msg"> 可获得入场动画
+ */
+
+.msg {
+  display: flex;
+  margin: 16px 0;
+}
+
+/* 用户提问：右侧蔚蓝气泡 */
+.msg.user {
+  justify-content: flex-end;
+}
+
+.bubble {
+  max-width: 78%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  line-height: 1.7;
+  font-size: 15px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.msg.user .bubble {
+  background: var(--el-color-primary);
+  color: #fff;
+  border-top-right-radius: 4px;
+}
+
+/* AI 回答：靠左纯文本，左侧留白，无边框无背景 */
+.msg.ai {
+  justify-content: flex-start;
+  padding-left: 24px;
+}
+
+.ai-text {
+  max-width: 85%;
+  padding: 2px 0;
+  line-height: 1.8;
+  font-size: 15px;
+  color: var(--el-text-color-primary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* 消息入场动画（淡入 + 上滑） */
+.msg-enter-active {
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.msg-enter-from {
+  opacity: 0;
+  transform: translateY(10px);
+}

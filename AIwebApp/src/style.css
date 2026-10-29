@@ -1,0 +1,38 @@
+﻿/* ===== 全局样式 + Element Plus 主题（主色：蔚蓝 #33CCFF） ===== */
+:root {
+  --el-color-primary: #33ccff;
+  --el-color-primary-light-3: #70dbff;
+  --el-color-primary-light-5: #99e5ff;
+  --el-color-primary-light-7: #c2f0ff;
+  --el-color-primary-light-8: #d6f4ff;
+  --el-color-primary-light-9: #eafaff;
+  --el-color-primary-dark-2: #29a3cc;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #fff;
+  color: var(--el-text-color-primary);
+}
+
+/* ===== ?????????AI ?? / ????????????????????? ===== */
+.msg-text {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 0;
+  line-height: 1.8;
+  font-size: 15px;
+  color: var(--el-text-color-primary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
