@@ -48,7 +48,7 @@ All tunable parameters live in `chatbot/config.py`:
 
 | Setting | Default | Description |
 |---|---|---|
-| `API_KEY` | env var `Zhipu_GLM` | Zhipu Open Platform API key |
+| `API_KEY` | required env var `Zhipu_GLM` | Zhipu Open Platform API key; never stored in source |
 | `BASE_URL` | `https://open.bigmodel.cn/api/paas/v4/` | Zhipu API base URL |
 | `MODEL_NAME` | `glm-5.3` | Chat model |
 | `EMBED_MODEL` | `embedding-3` | Embedding model |
@@ -57,7 +57,7 @@ All tunable parameters live in `chatbot/config.py`:
 | `FLASK_HOST` / `FLASK_PORT` | `127.0.0.1` / `5000` | Server host and port |
 | `FLASK_DEBUG` | `True` | Debug mode |
 
-> ⚠️ Security note: `config.py` contains a hardcoded fallback API key. Remove it before committing/deploying and use the environment variable instead:
+> 🔐 Security note: `config.py` does not store the API key. Set the environment variable before running:
 >
 > ```powershell
 > $env:Zhipu_GLM = "your Zhipu API key"

@@ -48,7 +48,7 @@ pip install flask langchain langchain-openai
 
 | 配置项 | 默认值 | 说明 |
 |---|---|---|
-| `API_KEY` | 环境变量 `Zhipu_GLM` | 智谱开放平台 API Key |
+| `API_KEY` | 必须通过环境变量 `Zhipu_GLM` 提供 | 智谱开放平台 API Key，不写入代码 |
 | `BASE_URL` | `https://open.bigmodel.cn/api/paas/v4/` | 智谱 API 地址 |
 | `MODEL_NAME` | `glm-5.3` | 聊天模型 |
 | `EMBED_MODEL` | `embedding-3` | 向量模型 |
@@ -57,7 +57,7 @@ pip install flask langchain langchain-openai
 | `FLASK_HOST` / `FLASK_PORT` | `127.0.0.1` / `5000` | 服务地址端口 |
 | `FLASK_DEBUG` | `True` | 调试模式 |
 
-> ⚠️ 安全提示：`config.py` 里有一个硬编码的 API Key 兜底值，正式提交/部署前建议移除，统一使用环境变量：
+> 🔐 安全提示：`config.py` 不保存 API Key。运行前请设置环境变量：
 >
 > ```powershell
 > $env:Zhipu_GLM = "你的智谱 API Key"
